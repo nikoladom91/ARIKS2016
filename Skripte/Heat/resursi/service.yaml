@@ -1,0 +1,87 @@
+heat_template_version: 2013-05-23
+ 
+description: Template that installs a php service server.
+ 
+parameters:
+  image:
+    type: string
+    label: Image name or ID
+    description: Image to be used for server. Please use an Ubuntu based image.
+    default: ubuntu_cloud14
+  flavor:
+    type: string
+    label: Flavor
+    description: Type of instance (flavor) to be used on the compute instance.
+    default: m1.small
+  key:
+    type: string
+    label: Key name
+    description: Name of key-pair to be installed on the compute instance.
+    default: my_key
+  private_network:
+    type: string
+    label: Private network name or ID
+    description: Network to attach server to.
+    default: net04
+  public_network:
+    type: string
+    label: Public network name or ID
+    description: Network to attach server to.
+    default: net04_ext
+ 
+resources:
+  wait_condition:
+    type: OS::Heat::WaitCondition
+    properties:
+      handle: { get_resource: wait_handle }
+      count: 1
+      timeout: 600
+ 
+  wait_handle:
+    type: OS::Heat::WaitConditionHandle
+ 
+  port:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_param: private_network }
+      security_groups:
+        - default
+      
+  service_instance:
+    type: OS::Nova::Server
+    properties:
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      key_name: { get_param: key }
+      networks:
+        - port: { get_resource: port }
+      user_data_format: RAW
+      user_data:
+        str_replace:
+          params:
+            wc_notify: { get_attr: ['wait_handle', 'curl_cli'] }
+          template: |
+            #!/bin/bash
+            apt-get update
+            apt-get -y upgrade
+            sudo debconf-set-selections <<< 'lamp-server^ mysql-server/root_password password grad'
+            sudo debconf-set-selections <<< 'lamp-server^ mysql-server/root_password_again password grad'
+            apt-get -y install git
+            apt-get -y install lamp-server^
+            cd /var/www/html/
+            wget https://www.dropbox.com/s/fras25n3lurzcr7/service.php
+            wget https://www.dropbox.com/s/zytlk34kiph933h/nusoap.php
+            
+            # notify heat that we are done here
+            wc_notify --data-binary '{"status": "SUCCESS"}'
+        
+  floating_ip1:
+    type: OS::Neutron::FloatingIP
+    properties:
+      floating_network: { get_param: public_network }
+
+  floating_ip_assoc1:
+    type: OS::Neutron::FloatingIPAssociation
+    properties:
+      floatingip_id: { get_resource: floating_ip1 }
+      port_id: { get_resource: port }

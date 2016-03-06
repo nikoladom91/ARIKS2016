@@ -1,0 +1,69 @@
+
+heat_template_version: 2013-05-23
+
+description: Simple template to deploy a single compute instance
+
+parameters:
+  name:
+    type: string
+    label: Users name
+    description: Who is startng this script?
+    default: John
+  image:
+    type: string
+    label: Image name or ID
+    description: Image to be used for compute instance
+    default: ubuntu_cloud
+  flavor:
+    type: string
+    label: Flavor
+    description: Type of instance (flavor) to be used
+    default: m1.small
+  key:
+    type: string
+    label: Key name
+    description: Name of key-pair to be used for compute instance
+    default: my_key
+  private_network:
+    type: string
+    label: Private network name or ID
+    description: Network to attach instance to.
+    default: my_net
+
+
+resources:
+  rng:
+    type: OS::Heat::RandomString
+    properties:
+      length: 4
+      sequence: digits
+  my_instance1:
+    type: OS::Nova::Server
+    properties:
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      key_name: { get_param: key }
+      networks:
+        - network: { get_param: private_network }
+      user_data_format: RAW
+      user_data: |
+        #!/bin/sh
+        echo "Hello, World!" >> hello.txt
+  my_instance2:
+    type: OS::Nova::Server
+    properties:
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      key_name: { get_param: key }
+      networks:
+        - network: { get_param: private_network }
+      user_data_format: RAW
+      user_data:
+        str_replace:
+          params:
+            __name__: { get_param: name }
+            __rnum__: { get_attr: [rng, value] }
+          template: |
+            #!/bin/sh
+            echo "Hello, World!" >> ahello.txt
+            echo "Hello, my name is __name__. Here is a random number: __rnum__." >> hello.txt

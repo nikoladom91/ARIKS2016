@@ -1,0 +1,40 @@
+heat_template_version: 2013-05-23
+
+parameters:
+  image:
+    type: string
+    label: Image name or ID
+    description: Image to be used for server. Please use an Ubuntu based image.
+    default: ubuntu_cloud14
+  flavor:
+    type: string
+    label: Flavor
+    description: Type of instance (flavor) to be used on the compute instance.
+    default: m1.small
+  key:
+    type: string
+    label: Key name
+    description: Name of key-pair to be installed on the compute instance.
+    default: soa_key
+  private_network:
+    type: string
+    label: Private network name or ID
+    description: Network to attach server to.
+    default: net04
+
+resources:
+  service:
+    type: lib/servicel.yaml
+    properties:
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      key: { get_param: key }
+      private_network: { get_param: private_network }
+  client:
+    type: lib/client.yaml
+    properties:
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      key: { get_param: key }
+      private_network: { get_param: private_network }
+      service_server: { get_attr: [service, ip] }
