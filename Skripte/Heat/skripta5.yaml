@@ -24,14 +24,14 @@ parameters:
 
 resources:
   service:
-    type: lib/servicel.yaml
+    type: https://raw.githubusercontent.com/nikoladom91/ARIKS2016/master/Skripte/Heat/resursi/service.yaml
     properties:
       image: { get_param: image }
       flavor: { get_param: flavor }
       key: { get_param: key }
       private_network: { get_param: private_network }
   client:
-    type: lib/client.yaml
+    type: https://raw.githubusercontent.com/nikoladom91/ARIKS2016/master/Skripte/Heat/resursi/client.yaml
     properties:
       image: { get_param: image }
       flavor: { get_param: flavor }
