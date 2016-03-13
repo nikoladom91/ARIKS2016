@@ -7,22 +7,18 @@ parameters:
     type: string
     label: Image name or ID
     description: Image to be used for server. Please use an Ubuntu based image.
-    default: trusty-server-cloudimg-amd64
   flavor:
     type: string
     label: Flavor
     description: Type of instance (flavor) to be used on the compute instance.
-    default: m1.small
   key:
     type: string
     label: Key name
     description: Name of key-pair to be installed on the compute instance.
-    default: my_key
   private_network:
     type: string
     label: Private network name or ID
     description: Network to attach server to.
-    default: private
   mysql_server:
     type: string
     label: MySQL database server

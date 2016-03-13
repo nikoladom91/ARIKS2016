@@ -1,13 +1,12 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import time
 from os import environ as env
 import novaclient.client
+from credentials import get_nova_creds
 
-nova = novaclient.client.Client("2", auth_url=env['OS_AUTH_URL'],
-                                username=env['OS_USERNAME'],
-                                api_key=env['OS_PASSWORD'],
-                                project_id=env['OS_TENANT_NAME'],
-                                region_name=env['OS_REGION_NAME'])
+nova = novaclient.client.Client("2", **get_nova_creds())
 
 try:
 
@@ -19,7 +18,7 @@ try:
     
     #stvaranje instance
     instance = nova.servers.create(name="vm2", image=image,
-                                   flavor=flavor, key_name="my_key",
+                                   flavor=flavor, key_name="my_key1",
                                    nics=nics)
 
     #cekanje 5 sec. prije ispisa kako bi se narede unutar nove

@@ -20,7 +20,7 @@ parameters:
     type: string
     label: Private network name or ID
     description: Network to attach server to.
-    default: private
+    default: my_net1
 
 resources:
   mysql:

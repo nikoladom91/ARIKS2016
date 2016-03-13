@@ -13,7 +13,7 @@ parameters:
     type: string
     label: Image name or ID
     description: Image to be used for compute instance
-    default: ubuntu_cloud
+    default: ubuntu_cloud14
   flavor:
     type: string
     label: Flavor
@@ -23,12 +23,12 @@ parameters:
     type: string
     label: Key name
     description: Name of key-pair to be used for compute instance
-    default: my_key
+    default: my_key1
   private_network:
     type: string
     label: Private network name or ID
     description: Network to attach instance to.
-    default: my_net
+    default: my_net1
 
 
 resources:

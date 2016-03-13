@@ -1,15 +1,13 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from os import environ as env
-import glanceclient as glclient
 import keystoneclient.v2_0.client as ksclient
+import glanceclient.v2.client as glclient
+from credentials import get_creds
 
 #instanciranje keystone objekta putem enviorment varijabli
-keystone = ksclient.Client(auth_url=env['OS_AUTH_URL'],
-                           username=env['OS_USERNAME'],
-                           password=env['OS_PASSWORD'],
-                           tenant_name=env['OS_TENANT_NAME'],
-                           region_name=env['OS_REGION_NAME'])
+keystone = ksclient.Client(**get_creds())
 
 #dohvaćanje URL adrese glance API-ja
 glance_endpoint = keystone.service_catalog.url_for(service_type='image')

@@ -6,8 +6,8 @@ resources:
   my_instance:
     type: OS::Nova::Server
     properties:
-      image: ubuntu_cloud
+      image: ubuntu_cloud14
       flavor: m1.small
-      key_name: my_key
+      key_name: my_key1
       networks:
-        - network: my_net
+        - network: my_net1

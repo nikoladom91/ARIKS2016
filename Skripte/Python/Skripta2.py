@@ -1,26 +1,19 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from os import environ as env
-import glanceclient.v2.client as glclient
 import keystoneclient.v2_0.client as ksclient
-import novaclient.v2.client as nvclient
+import glanceclient.v2.client as glclient
 import novaclient.client
+from credentials import get_creds, get_nova_creds
 
-keystone = ksclient.Client(auth_url=env['OS_AUTH_URL'],
-                           username=env['OS_USERNAME'],
-                           password=env['OS_PASSWORD'],
-                           tenant_name=env['OS_TENANT_NAME'],
-                           region_name=env['OS_REGION_NAME'])
+keystone = ksclient.Client(**get_creds())
 
 glance_endpoint = keystone.service_catalog.url_for(service_type='image')
 glance = glclient.Client(glance_endpoint, token=keystone.auth_token)
 
 #instanciranje nova objekta, argument "2" se odnosi na verziju klase #koja ce biti korištena za stvaranje objekta
-nova = novaclient.client.Client("2", auth_url=env['OS_AUTH_URL'],
-                                username=env['OS_USERNAME'],
-                                api_key=env['OS_PASSWORD'],
-                                project_id=env['OS_TENANT_NAME'],
-                                region_name=env['OS_REGION_NAME'])
+nova = novaclient.client.Client("2", **get_nova_creds())
 
 #ispis teksta na terminal
 print "List of all images by name and size:"

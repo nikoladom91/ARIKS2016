@@ -15,12 +15,18 @@ parameters:
     type: string
     label: Key name
     description: Name of key-pair to be installed on the compute instance.
-    default: soa_key
+    default: my_key1
   private_network:
     type: string
     label: Private network name or ID
     description: Network to attach server to.
-    default: net04
+    default: my_net1
+  public_network:
+    type: string
+    label: Public network name or ID
+    description: Network to attach server to.
+    default: public
+
 
 resources:
   service:

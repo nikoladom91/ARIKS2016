@@ -1,21 +1,15 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from os import environ as env
 import novaclient.client
 from neutronclient.v2_0 import client as neutronclient
+from credentials import get_creds, get_nova_creds
 
-nova = novaclient.client.Client("2", auth_url=env['OS_AUTH_URL'],
-                                username=env['OS_USERNAME'],
-                                api_key=env['OS_PASSWORD'],
-                                project_id=env['OS_TENANT_NAME'],
-                                region_name=env['OS_REGION_NAME'])
+nova = novaclient.client.Client("2", **get_nova_creds())
 
 #instanciranje neutron objekta
-neutron = neutronclient.Client(auth_url=env['OS_AUTH_URL'],
-                               username=env['OS_USERNAME'],
-                               password=env['OS_PASSWORD'],
-                               tenant_name=env['OS_TENANT_NAME'],
-                               region_name=env['OS_REGION_NAME'])
+neutron = neutronclient.Client(**get_creds())
 
 network_name = 'my_net2'
 
