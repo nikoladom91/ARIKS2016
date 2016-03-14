@@ -22,3 +22,5 @@ image = glance.images.create(name="ubuntu_cloud15", visibility="public",
                             container_format="bare")
 # korištenje glance metode za dodavanje OS slike prethodno kreiranom elementu
 glance.images.upload(image.id, open('wily-server-cloudimg-amd64-disk1.img', 'rb'))
+
+print "Image Created"

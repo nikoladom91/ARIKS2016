@@ -22,11 +22,11 @@ router = neutron.create_router(body=body_router)
 router_id = router['router']['id']
 
 # pisanje zahtjeva za stvaranjem porta
-# koji na privatnoj mreži sa adresom 10.20.0.1 (gateway)
+# koji na privatnoj mreži sa adresom 10.20.1.1 (gateway)
 body_port = {'port': {
     'admin_state_up': True,
     'network_id': network_id,
-    'fixed_ips': [{"ip_address": "10.20.0.1"}]
+    'fixed_ips': [{"ip_address": "10.20.1.1"}]
     }}
 	
 port = neutron.create_port(body=body_port)
