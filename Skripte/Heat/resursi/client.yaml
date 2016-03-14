@@ -95,7 +95,7 @@ resources:
 outputs:
   name:
     description: Name of the Client instance.
-    value: { get_attr: [service_instance, name] }
+    value: { get_attr: [client_instance, name] }
   ip:
     description: The IP address of the Client instance.
     value: { get_attr: [floating_ip, floating_ip_address] }
