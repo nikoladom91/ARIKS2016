@@ -2,7 +2,6 @@
 require_once "nusoap.php";
 $serviceIP = explode("\n", file_get_contents('./serviceIP.txt'));
 
-echo $serviceIP[0]."a";
 $client = new nusoap_client("http://".$serviceIP[0]."/service.php?wsdl", true);
 
 $error = $client->getError();

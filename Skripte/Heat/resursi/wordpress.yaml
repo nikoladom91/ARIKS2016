@@ -49,13 +49,18 @@ resources:
     type: OS::Heat::WaitConditionHandle
 
   security_group:
-      type: OS::Neutron::SecurityGroup
-      properties:
-        name: web_server_security_group
-        rules:
-          - protocol: tcp
-            port_range_min: 80
-            port_range_max: 80
+    type: OS::Neutron::SecurityGroup
+    properties:
+      name: web_server_security_group
+      rules:
+        -port_range_min: 80
+         port_range_max: 80
+         protocol: tcp
+         direction: ingress
+        -port_range_min: 80
+         port_range_max: 80
+         protocol: tcp
+         direction: egress
 
   port:
     type: OS::Neutron::Port
@@ -63,6 +68,7 @@ resources:
       network: { get_param: private_network }
       security_groups:
         - { get_resource: security_group }
+        - default
 
   wordpress_instance:
     type: OS::Nova::Server
@@ -90,7 +96,7 @@ resources:
             apt-get -y install apache2 php5 libapache2-mod-php5 php5-mysql php5-gd mysql-client
 
             # download wordpress
-            wget http://172.24.4.1/debs/latest.tar.gz
+            wget http://wordpress.org/latest.tar.gz
             tar -xzf latest.tar.gz
 
             # configure wordpress

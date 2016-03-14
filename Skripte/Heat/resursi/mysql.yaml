@@ -49,23 +49,29 @@ resources:
     type: OS::Heat::RandomString
     properties:
       length: 32
-      sequence: lettersdigits
+      sequence: lettersdigits 
  
   security_group:
     type: OS::Neutron::SecurityGroup
     properties:
       name: db_server_security_group
       rules:
-        - protocol: tcp
-          port_range_min: 3306
-          port_range_max: 3306
- 
+        -port_range_min: 3306
+         port_range_max: 3306
+         protocol: tcp
+         direction: ingress
+        -port_range_min: 3306
+         port_range_max: 3306
+         protocol: tcp
+         direction: egress
+
   port:
     type: OS::Neutron::Port
     properties:
       network: { get_param: private_network }
       security_groups:
         - { get_resource: security_group }
+        - default
       
   mysql_instance:
     type: OS::Nova::Server

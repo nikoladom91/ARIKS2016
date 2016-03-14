@@ -23,7 +23,7 @@ parameters:
     type: string
     label: Public network name or ID
     description: Network to attach server to.
-  servis_server:
+  service_server:
     type: string
     label: php service server
     description: IP address of the php service server.
@@ -76,7 +76,7 @@ resources:
             # notify heat that we are done here
             wc_notify --data-binary '{"status": "SUCCESS"}'
             
-  floating_ip2:
+  floating_ip:
     type: OS::Neutron::FloatingIP
     properties:
       floating_network: { get_param: public_network }
@@ -86,3 +86,11 @@ resources:
     properties:
       floatingip_id: { get_resource: floating_ip }
       port_id: { get_resource: port }
+
+outputs:
+  name:
+    description: Name of the Client instance.
+    value: { get_attr: [service_instance, name] }
+  ip:
+    description: The IP address of the Client instance.
+    value: { get_attr: [floating_ip, floating_ip_address] }

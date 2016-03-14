@@ -37,7 +37,7 @@ resources:
     properties:
       length: 4
       sequence: digits
-  my_instance1:
+  inst_simple:
     type: OS::Nova::Server
     properties:
       image: { get_param: image }
@@ -49,7 +49,7 @@ resources:
       user_data: |
         #!/bin/sh
         echo "Hello, World!" >> hello.txt
-  my_instance2:
+  inst_advanced:
     type: OS::Nova::Server
     properties:
       image: { get_param: image }

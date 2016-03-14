@@ -80,3 +80,11 @@ resources:
     properties:
       floatingip_id: { get_resource: floating_ip }
       port_id: { get_resource: port }
+
+outputs:
+  name:
+    description: Name of the Service instance.
+    value: { get_attr: [service_instance, name] }
+  ip:
+    description: The IP address of the Service instance.
+    value: { get_attr: [floating_ip, floating_ip_address] }
