@@ -23,6 +23,10 @@ parameters:
     type: string
     label: Public network name or ID
     description: Network to attach server to.
+  security_group:
+    type: string
+    label: LAMP security group
+    description: Name of LAMP security group
  
 resources:
   wait_condition:
@@ -40,6 +44,7 @@ resources:
     properties:
       network: { get_param: private_network }
       security_groups:
+        - { get_resource: security_group }
         - default
       
   service_instance:

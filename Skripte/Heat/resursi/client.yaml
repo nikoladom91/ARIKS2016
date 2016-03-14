@@ -27,6 +27,10 @@ parameters:
     type: string
     label: php service server
     description: IP address of the php service server.
+  security_group:
+    type: string
+    label: LAMP security group
+    description: Name of LAMP security group
 
 resources:
   wait_condition:
@@ -44,6 +48,7 @@ resources:
     properties:
       network: { get_param: private_network }
       security_groups:
+        - { get_resource: security_group }
         - default
 
   client_instance:
