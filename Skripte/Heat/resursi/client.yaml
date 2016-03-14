@@ -48,7 +48,7 @@ resources:
     properties:
       network: { get_param: private_network }
       security_groups:
-        - { get_resource: security_group }
+        - { get_param: security_group }
         - default
 
   client_instance:
