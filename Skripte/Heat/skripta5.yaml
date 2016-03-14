@@ -34,14 +34,14 @@ resources:
     properties:
       name: LAMP_security_group
       rules:
-        -port_range_min: 80
-         port_range_max: 80
-         protocol: tcp
-         direction: ingress
-        -port_range_min: 80
-         port_range_max: 80
-         protocol: tcp
-         direction: egress
+        - port_range_min: 80
+          port_range_max: 80
+          protocol: tcp
+          direction: ingress
+        - port_range_min: 80
+          port_range_max: 80
+          protocol: tcp
+          direction: egress
   service:
     type: https://raw.githubusercontent.com/nikoladom91/ARIKS2016/master/Skripte/Heat/resursi/service.yaml
     properties:

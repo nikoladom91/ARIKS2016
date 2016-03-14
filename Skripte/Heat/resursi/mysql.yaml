@@ -56,14 +56,14 @@ resources:
     properties:
       name: db_server_security_group
       rules:
-        -port_range_min: 3306
-         port_range_max: 3306
-         protocol: tcp
-         direction: ingress
-        -port_range_min: 3306
-         port_range_max: 3306
-         protocol: tcp
-         direction: egress
+        - port_range_min: 3306
+          port_range_max: 3306
+          protocol: tcp
+          direction: ingress
+        - port_range_min: 3306
+          port_range_max: 3306
+          protocol: tcp
+          direction: egress
 
   port:
     type: OS::Neutron::Port
