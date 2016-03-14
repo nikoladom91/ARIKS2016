@@ -2,7 +2,7 @@
 
 OpenStack vježbe za kolegij: Upravljanje u programskom inžinjerstvu
 
-Vježbe su zapisane u OpenStack_Vježbe.pdf dokumentu
+Vježbe su zapisane u OpenStack_Vjezbe-UPI.pdf dokumentu
 
 Skripte se nalaze unutar mape Skripte te su podjeljene u Heat i Python vježbe
 
