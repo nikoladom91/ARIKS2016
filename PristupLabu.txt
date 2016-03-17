@@ -1,0 +1,48 @@
+Na trystacku napraviti privatnu mrezu koja preko routera ima pristup javnoj mrezi.
+Napratiti sigurnosni kljuc putem import key gumba. Public dio kljuca koji se upisuje u Horizon gui je:
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2gLQF1T0KXwoNGbJAVHqb6m0O8M3AfX7jLtk5R3vnfyAlfSf90WnZlAvNnm7plSEiT+wBfNmeHRYU6JAW8epwBzoTOzgUmx2t1jiKS8kox3p6luI6UBvThXMFjMiKstN011flOZ7hoXDnd57tbD07m6AqEy/wJxi1ugSW7zETeULV5Yq0gMzhHKMTuPffHG8Cuv4wZ2VeRb6/e363ACSNEeegvMrYl0Q5JUYMRJ8+cV1Du8A3aDE8+teYO0PkL1kIIi1U+sRbFaw5Q3DcMapdnsDw5cqKlD1pthrusedy+XUcr4Sl69oq99dIHdpizjYwM50rYwHJ47JLqazqlRLZ administrator@network
+
+Na trystacku napraviti instancu sa sljedecim atributima:
+
+	image: ubuntu14.04-LTS
+	flavour: m.small
+	network: mreza koju ste napravili u prethodnome koraku
+	security group: default
+
+Sigurnosnu grupu modificirati tako da se otvore svi ulazni i izlazni tcp portovi.
+
+Dodjelit kreiranoj instanci Floating IP adresu.
+
+Spojiti se na tu instancu putem ssh (ukoliko koristite windows OS koristite MobaXterm)
+
+Privatni dio sigurnosnog kljuca mozete naci na repozitoriju https://github.com/nikoladom91/ARIKS2016. Skinite ga na desktop
+
+spajate se putem naredbe:
+
+ssh -i Desktop/cloud.key ubuntu@floatingIP
+
+gdje je floatingIP ona floating IP adresa koju ste dodjelili svojoj instanci
+
+Unutar instance pokrenete sljedece naredbu:
+
+sudo iptables -t nat -A OUTPUT -d 192.168.222.43 -j DNAT --to-destination 127.0.0.1
+
+te instalirajte aplikacije
+
+sudo apt-get install git
+
+sudo apt-get install iptables-persistent
+
+Prilikom instalacije iptables-persistent odaberete Yes na svim opcijama
+
+pokrenite naredbu:
+
+git clone https://github.com/nikoladom91/ARIKS2016
+
+cd ARIKS2016
+
+Floating IP adrsu vase masine na trystacku zapisite u tekstu na linku http://shrib.com/V2yxP8TBU8c49lW u novom redu.
+
+
+
