@@ -50,5 +50,10 @@ cd ARIKS2016
 
 Floating IP adrsu vase masine na trystacku zapisite u tekstu na linku http://shrib.com/V2yxP8TBU8c49lW u novom redu.
 
+U novom tabu u MobaXterm pokrenuti naredbu
+
+ssh -N -i Desktop/cloud.key -L 2280:localhost:2280 ubuntu@floatingIP
+
+
 
 
