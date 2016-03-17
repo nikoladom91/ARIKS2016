@@ -32,9 +32,15 @@ te instalirajte aplikacije
 
 sudo apt-get install git
 
+sudo apt-get install python-dev python-pip
+
 sudo apt-get install iptables-persistent
 
 Prilikom instalacije iptables-persistent odaberete Yes na svim opcijama
+
+Instalirajte OpenStack klijent putem naredbe:
+
+sudo pip install python-openstackclient
 
 pokrenite naredbu:
 
