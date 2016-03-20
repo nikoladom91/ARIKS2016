@@ -40,7 +40,7 @@ $ sudo apt-get update
 
 $ sudo apt-get install git
 
-$ apt-get install python-dev python-pip
+$ sudo apt-get install python-dev python-pip
 
 $ sudo apt-get install iptables-persistent
 
