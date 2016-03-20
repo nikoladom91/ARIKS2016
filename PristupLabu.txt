@@ -25,7 +25,7 @@ spajate se putem naredbe:
 $ ssh -i Desktop/UPI.key -L 2280:localhost:2280 ubuntu@floatingIP
 
 #########################################################################################
-Namjestanje trystack virtualne masine
+Namjestanje trystack masine
 #########################################################################################
 
 gdje je floatingIP ona floating IP adresa koju ste dodjelili svojoj instanci
