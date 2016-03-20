@@ -36,7 +36,9 @@ $ sudo iptables -t nat -A OUTPUT -d 192.168.222.43 -j DNAT --to-destination 127.
 
 te instalirajte aplikacije
 
-sudo apt-get install git
+$ sudo apt-get update
+
+$ sudo apt-get install git
 
 $ apt-get install python-dev python-pip
 
