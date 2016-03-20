@@ -18,17 +18,21 @@ Sigurnosnu grupu modificirati tako da se otvore svi ulazni i izlazni tcp portovi
 
 Dodjelit kreiranoj instanci Floating IP adresu.
 
-Spojiti se na tu instancu putem ssh (ukoliko koristite windows OS koristite MobaXterm).
-
-spajate se putem naredbe:
+Spojiti se na tu instancu putem ssh (ukoliko koristite windows OS koristite MobaXterm) putem
+naredbe:
 
 $ ssh -i Desktop/UPI.key -L 2280:localhost:2280 ubuntu@floatingIP
+
+gdje je floatingIP ona floating IP adresa koju ste dodjelili svojoj instanci. Ukoliko primite
+gresku da su dopustenja kljuca previse otvorena (ako koristite linux), potrebno je promjeniti
+dopustenja kljuca naredbom:
+
+$ chmod 600 Desktop/UPI.key
+
 
 #########################################################################################
 Namjestanje trystack masine
 #########################################################################################
-
-gdje je floatingIP ona floating IP adresa koju ste dodjelili svojoj instanci
 
 Unutar instance pokrenete sljedecu naredbu:
 
