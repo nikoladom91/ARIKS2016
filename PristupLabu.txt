@@ -46,9 +46,7 @@ $ sudo apt-get install iptables-persistent
 
 (Prilikom instalacije iptables-persistent odaberete Yes na svim opcijama)
 
-$ sudo pip install python-openstackclient
-
-$ sudo pip install python-heatclient
+$ sudo pip install python-openstackclient python-heatclient
 
 #########################################################################################
 Uspostava veze sa Seip lab OpenStack-om
