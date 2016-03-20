@@ -78,6 +78,14 @@ $ git clone https://github.com/nikoladom91/ARIKS2016
 
 $ cd ARIKS2016
 
+Ukoliko zelite koristiti Instance Console unutar Horizona za pristup gui-u instance potrebno je otvoriti dodatnu
+ssh konekciju prema trystack masini naredbom:
+
+$ ssh -i Desktop/UPI.key -L 6080:localhost:6080 ubuntu@floatingIP
+
+te u URL adresi konzole promjeniti IP kontrolera u localhost.
+(primjer: http://192.168.222.43:6080/vnc_auto.html?token=7... -> http://localhost:6080/vnc_auto.html?token=7...)
+
 #########################################################################################
 Dodatne informacije i upozorenja
 #########################################################################################
@@ -88,7 +96,3 @@ zapamcene preko veceri te ih je potrebno ponovno uspostaviti putem ploce svakog 
 Trystack OpenStack okruzenje periodicki unistava instance, floating ip adrese i mreze tako da je
 vazno lokalno pohraniti rad te trystack masinu koristiti iskljucivo za testiranje sa OpenStack-om. Ukoliko
 ne drzite aktualnu verziju rada lokalno pohranjenu velika je mogucnost da cete je izgubiti.
-
-
-
-
