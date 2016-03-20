@@ -60,18 +60,18 @@ nemozete pristupiti OpenStacku ponovite postupak. Vezu prekidate dodavanjem IP a
 "*" (format *x.x.x.x).
 
 #########################################################################################
-Login i koriötenje Seip lab OpenStack-a
+Login i kori≈°tenje Seip lab OpenStack-a
 #########################################################################################
 
 Putem web preglednika na vasem racunalu pokusajte pristupiti adresi "http://localhost:2280". Ukoliko je
 veza uspjesno uspostavljena biti ce vam ponudjen login na web-gui OpenStack-a seip laba. Spojite se putem
-vaseg korisnickog racuna. Preuzmite RC datoeteku na Desktop (opisano u vjeûbama pod "Pristup CLI"). Datoteku
+vaseg korisnickog racuna. Preuzmite RC datoeteku na Desktop (opisano u vje≈æbama pod "Pristup CLI"). Datoteku
 premjestite na trystack virtualnu masinu naredbom:
 
 scp -i Desktop/UPI.key Desktop/RCfile ubuntu@floatingIP:/home/ubuntu/
 
 gdje RCfile predstavlja ime preuzete datoteke. Daljnjim pokretanjem RC datoteke na trystack virtualnoj masini
-(opisano u vjeûbama pod "Pristup CLI") mozete tu virtualnu masinu koristiti za pokretanje python skripti i
+(opisano u vje≈æbama pod "Pristup CLI") mozete tu virtualnu masinu koristiti za pokretanje python skripti i
 OpenStack CLI naredbi. Na virtualnu masinu skinite repozitorij sa vjezbama putem naredbe:
 
 $ git clone https://github.com/nikoladom91/ARIKS2016
@@ -82,7 +82,7 @@ $ cd ARIKS2016
 Dodatne informacije i upozorenja
 #########################################################################################
 
-Iz tehnickih razloga veza sa Seip lab OpenStack-om je moguca samo  izmedju 8 i 21:30 sati. Veze ne ostaju
+Iz tehnickih razloga, veza sa Seip lab OpenStack-om je moguca samo  izmedju 8 i 21:30 sati. Veze ne ostaju
 zapamcene preko veceri te ih je potrebno ponovno uspostaviti putem ploce svakog novog dana.
 
 Trystack OpenStack okruzenje periodicki unistava instance, floating ip adrese i mreze tako da je
