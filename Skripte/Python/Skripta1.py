@@ -17,7 +17,7 @@ glance_endpoint = keystone.service_catalog.url_for(service_type='image')
 glance = glclient.Client(glance_endpoint, token=keystone.auth_token)
  
 # korištenje glance metode za kreaciju elementa OS slike
-image = glance.images.create(name="ubuntu_cloud15", visibility="public",
+image = glance.images.create(name="ubuntu_cloud15",
                             disk_format="qcow2",
                             container_format="bare")
 # korištenje glance metode za dodavanje OS slike prethodno kreiranom elementu
