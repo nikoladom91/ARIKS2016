@@ -14,7 +14,8 @@ Na trystacku napraviti instancu sa sljedecim atributima:
 	network: mreza koju ste napravili u prethodnome koraku
 	security group: default
 
-Sigurnosnu grupu modificirati tako da se otvore svi ulazni i izlazni tcp portovi.
+Sigurnosnu grupu modificirati tako da se otvore svi ulazni i izlazni tcp portovi. Uz to potrebno
+je posebno otvoriti ulazni i izlazni tcp port 22 za ssh komunikaciju.
 
 Dodjelit kreiranoj instanci Floating IP adresu.
 
@@ -100,3 +101,8 @@ zapamcene preko veceri te ih je potrebno ponovno uspostaviti putem ploce svakog 
 Trystack OpenStack okruzenje periodicki unistava instance, floating ip adrese i mreze tako da je
 vazno lokalno pohraniti rad te trystack masinu koristiti iskljucivo za testiranje sa OpenStack-om. Ukoliko
 ne drzite aktualnu verziju rada lokalno pohranjenu velika je mogucnost da cete je izgubiti.
+
+Ukoliko se pri izvodjenju skripti iz vjezbi jave greske potrebno je potvrditi jesu li imena resursa unutar
+skripti iste kao u OpenStack okruzenju koje se koristi. Ukoliko nisu potrebno ih je izmjeniti unutar samih
+skripti. Primjer toga bi bilo ime privatne mreze u Python Skripti 4. Unutar skripte u liniji 15 koristeno je
+ime "private" dok je unutar Seip lab OpenStack-a ime javne mreze "net04_ext". 
