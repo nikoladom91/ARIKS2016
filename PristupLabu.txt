@@ -72,7 +72,7 @@ veza uspjesno uspostavljena biti ce vam ponudjen login na web-gui OpenStack-a se
 vaseg korisnickog racuna. Preuzmite RC datoeteku na Desktop (opisano u vježbama pod "Pristup CLI"). Datoteku
 premjestite na trystack virtualnu masinu naredbom:
 
-scp -i Desktop/RCfile Desktop/RCfile ubuntu@floatingIP:/home/ubuntu/
+scp -i Desktop/UPI.key Desktop/RCfile ubuntu@floatingIP:/home/ubuntu/
 
 gdje RCfile predstavlja ime preuzete datoteke. Daljnjim pokretanjem RC datoteke na trystack virtualnoj masini
 (opisano u vježbama pod "Pristup CLI") mozete tu virtualnu masinu koristiti za pokretanje python skripti i
