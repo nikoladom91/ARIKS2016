@@ -93,6 +93,19 @@ $ ssh -i Desktop/UPI.key -L 6080:localhost:6080 ubuntu@floatingIP
 te u URL adresi konzole promjeniti IP kontrolera u localhost.
 (primjer: http://192.168.222.43:6080/vnc_auto.html?token=7... -> http://localhost:6080/vnc_auto.html?token=7...)
 
+Ako zelite pristupiti instanci koja koristi ubuntu cloud sliku potrebno je napraviti iduce:
+
+Instance kojima se moze pristupiti ovim putem moraju: imati floating IP adresu, koristiti sigurnosni kljuc key1.
+Na trystack instanci pokrenut naredbu:
+
+$ ssh -p 2220 student@localhost
+
+Lozinka je "rw7wcAhK". U home direktoriju student racuna u koj ste usli nalazi se "key1.pem". Putem naredbe:
+
+$ ssh -i key1.pem ubuntu@floatingIPinst
+
+gdje floatingIPinst predstavlja floating ip adresu instance, mozete pristupiti zeljenoj instanci.
+
 #########################################################################################
 Dodatne informacije i upozorenja
 #########################################################################################
