@@ -39,7 +39,7 @@ Unutar instance pokrenete sljedecu naredbu:
 
 $ sudo iptables -t nat -A OUTPUT -d 192.168.222.43 -j DNAT --to-destination 127.0.0.1
 
-ignorirajte host not found gresku
+ignorirajte unable to resolve host gresku
 
 te instalirajte aplikacije
 
