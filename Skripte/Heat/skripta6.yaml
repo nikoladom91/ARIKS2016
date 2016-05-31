@@ -30,6 +30,8 @@ parameters:
   external_network_id:
     type: string
     description: UUID of a Neutron external network
+    default: admin_internal_net
+
 resources:
   database_password:
     type: OS::Heat::RandomString
