@@ -69,7 +69,7 @@ resources:
       min_size: 1
       max_size: 3
       resource:
-        type: lb_server.yaml
+        type: https://raw.githubusercontent.com/nikoladom91/ARIKS2016/master/Skripte/Heat/resursi/lb_server.yaml
         properties:
           flavor: {get_param: flavor}
           image: {get_param: image}
