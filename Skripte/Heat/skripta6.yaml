@@ -4,21 +4,27 @@ parameters:
   image:
     type: string
     description: Image used for servers
+    default: ubuntu_cloud_14
   key:
     type: string
     description: SSH key to connect to the servers
+    default: UPI
   flavor:
     type: string
     description: flavor used by the web servers
+    default: m.small
   database_flavor:
     type: string
     description: flavor used by the db server
+    default: m.small
   network:
     type: string
     description: Network used by the server
+    default: admin_internal_net
   subnet_id:
     type: string
     description: subnet on which the load balancer will be located
+    default: admin_internal_net__subnet
   database_name:
     type: string
     description: Name of the wordpress DB
@@ -30,7 +36,7 @@ parameters:
   external_network_id:
     type: string
     description: UUID of a Neutron external network
-    default: admin_internal_net
+    default: admin_floating_net
 
 resources:
   database_password:
