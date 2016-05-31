@@ -12,11 +12,11 @@ parameters:
   flavor:
     type: string
     description: flavor used by the web servers
-    default: m.small
+    default: m1.small
   database_flavor:
     type: string
     description: flavor used by the db server
-    default: m.small
+    default: m1.small
   network:
     type: string
     description: Network used by the server
