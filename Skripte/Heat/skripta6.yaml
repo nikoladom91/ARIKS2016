@@ -148,7 +148,7 @@ resources:
       matching_metadata: {'metadata.user_metadata.stack': {get_param: "OS::stack_id"}}
       comparison_operator: lt
   monitor:
-    type: OS::Neutron::HealthMonitor
+    type: OS::Neutron::LBaaS::HealthMonitor
     properties:
       type: TCP
       delay: 5
