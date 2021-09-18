@@ -94,7 +94,6 @@ resources:
             #!/bin/bash
 
             # install MySQL
-            echo "deb-src http://172.24.4.1/debs/ amd64/" > /etc/apt/source.list
             apt-get update
             export DEBIAN_FRONTEND=noninteractive
             apt-get install -y mysql-server
