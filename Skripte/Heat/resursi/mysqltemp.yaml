@@ -94,6 +94,7 @@ resources:
             #!/bin/bash
 
             # install MySQL
+            echo "ubuntu:12345678"|chpasswd
             export DEBIAN_FRONTEND=noninteractive
             apt-get install -y mysql-server
  
