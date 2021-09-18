@@ -80,7 +80,8 @@ resources:
       flavor: { get_param: flavor }
       key_name: { get_param: key }
       networks:
-        - port: { get_resource: port }
+        - network: { get_param: private_network }
+##        - port: { get_resource: port }
       user_data_format: RAW
       user_data:
         str_replace:
