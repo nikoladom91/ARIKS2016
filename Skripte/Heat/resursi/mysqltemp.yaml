@@ -95,29 +95,6 @@ resources:
 
             # install MySQL
             apt-get update
-            export DEBIAN_FRONTEND=noninteractive
-            apt-get install -y mysql-server
- 
-            # configure MySQL root password
-            mysqladmin -u root password "__mysql_root_password__"
- 
-            # listen on all network interfaces
-            sed -i "s/bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
- 
-            # restart service
-            service mysql restart
- 
-            # create wordpress database
-            mysql -u root --password="__mysql_root_password__" <<EOF
-            CREATE DATABASE __database_name__;
-            CREATE USER '__database_user__'@'localhost';
-            SET PASSWORD FOR '__database_user__'@'localhost'=PASSWORD("__database_password__");
-            GRANT ALL PRIVILEGES ON __database_name__.* TO '__database_user__'@'localhost' IDENTIFIED BY '__database_password__';
-            CREATE USER '__database_user__'@'%';
-            SET PASSWORD FOR '__database_user__'@'%'=PASSWORD("__database_password__");
-            GRANT ALL PRIVILEGES ON __database_name__.* TO '__database_user__'@'%' IDENTIFIED BY '__database_password__';
-            FLUSH PRIVILEGES;
-            EOF
  
             # notify heat that we are done here
             wc_notify --data-binary '{"status": "SUCCESS"}'
