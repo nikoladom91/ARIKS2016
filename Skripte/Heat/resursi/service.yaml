@@ -73,7 +73,7 @@ resources:
             wget --no-check-certificate https://raw.githubusercontent.com/nikoladom91/ARIKS2016/master/Skripte/Heat/resursi/nusoap.php
             
             # notify heat that we are done here
-            wc_notify --data-binary '{"status": "SUCCESS"}'
+            wc_notify -k --data-binary '{"status": "SUCCESS"}'
         
   floating_ip:
     type: OS::Neutron::FloatingIP
