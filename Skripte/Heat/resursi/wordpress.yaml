@@ -95,9 +95,7 @@ resources:
             apt-get -y install apache2 ghostscript libapache2-mod-php mysql-server php php-bcmath php-curl php-imagick php-intl php-json php-mbstring php-mysql php-xml php-zip
             
             # download wordpress
-            mkdir -p /srv/www
-            chown www-data: /srv/www
-            curl https://wordpress.org/latest.tar.gz 
+            wget https://wordpress.org/latest.tar.gz 
             tar -xzf latest.tar.gz
 
             # configure wordpress
