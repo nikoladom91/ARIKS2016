@@ -79,7 +79,7 @@ resources:
             echo "__service_ip__" >> serviceIP.txt
             
             # notify heat that we are done here
-            wc_notify --data-binary '{"status": "SUCCESS"}'
+            wc_notify -k --data-binary '{"status": "SUCCESS"}'
             
   floating_ip:
     type: OS::Neutron::FloatingIP
