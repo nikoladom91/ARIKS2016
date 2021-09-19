@@ -112,10 +112,10 @@ resources:
             CREATE DATABASE __database_name__;
             CREATE USER '__database_user__'@'localhost';
             SET PASSWORD FOR '__database_user__'@'localhost'="__database_password__";
-            GRANT ALL PRIVILEGES ON __database_name__.* TO '__database_user__'@'localhost' IDENTIFIED BY '__database_password__';
+            GRANT ALL PRIVILEGES ON __database_name__.* TO '__database_user__'@'localhost';
             CREATE USER '__database_user__'@'%';
             SET PASSWORD FOR '__database_user__'@'%'="__database_password__";
-            GRANT ALL PRIVILEGES ON __database_name__.* TO '__database_user__'@'%' IDENTIFIED BY '__database_password__';
+            GRANT ALL PRIVILEGES ON __database_name__.* TO '__database_user__'@'%';
             FLUSH PRIVILEGES;
             EOF
  
