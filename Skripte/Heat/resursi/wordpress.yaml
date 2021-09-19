@@ -92,10 +92,12 @@ resources:
 
             # install dependencies
             apt-get update
-            apt-get -y install apache2 php5 libapache2-mod-php5 php5-mysql php5-gd mysql-client
-
+            apt-get -y install apache2 ghostscript libapache2-mod-php mysql-server php php-bcmath php-curl php-imagick php-intl php-json php-mbstring php-mysql php-xml php-zip
+            
             # download wordpress
-            wget http://wordpress.org/latest.tar.gz
+            mkdir -p /srv/www
+            chown www-data: /srv/www
+            curl https://wordpress.org/latest.tar.gz 
             tar -xzf latest.tar.gz
 
             # configure wordpress
@@ -114,7 +116,7 @@ resources:
             chmod -R g+w /var/www/html/
 
             # notify heat that we are done here
-            wc_notify --data-binary '{"status": "SUCCESS"}'
+            wc_notify -k --data-binary '{"status": "SUCCESS"}'
 
 outputs:
   name:
