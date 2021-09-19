@@ -120,7 +120,7 @@ resources:
             EOF
  
             # notify heat that we are done here
-            wc_notify --data-binary '{"status": "SUCCESS"}'
+            wc_notify -k --data-binary '{"status": "SUCCESS"}'
  
 outputs:
   name:
